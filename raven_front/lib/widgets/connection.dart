@@ -123,18 +123,18 @@ class _ConnectionLightState extends State<ConnectionLight>
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         /// for manual testing
-        //TextButton(
-        //    onPressed: () {
-        //      print(_animationControllerUp!.value);
-        //      setState(() => activity = 'up');
-        //    },
-        //    child: Text('$activity')),
-        //TextButton(
-        //    onPressed: () {
-        //      print(_animationControllerActive!.value);
-        //      setState(() => activity = 'down');
-        //    },
-        //    child: Text('stop')),
+        TextButton(
+            onPressed: () {
+              print(_animationControllerUp!.value);
+              setState(() => activity = 'up');
+            },
+            child: Text('$activity')),
+        TextButton(
+            onPressed: () {
+              print(_animationControllerActive!.value);
+              setState(() => activity = 'down');
+            },
+            child: Text('stop')),
         ////Text('Loading...${widget.name}... $activity'),
         IconButton(
           onPressed: () => showDialog(
