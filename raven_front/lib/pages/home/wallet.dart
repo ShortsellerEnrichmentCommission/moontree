@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:raven_front/components/components.dart';
 import 'package:raven_front/pages/account/transactions.dart';
+import 'package:raven_front/pages/account/wallet.dart';
 import 'package:raven_front/pages/misc/scan.dart';
 import 'package:raven_front/pages/pages.dart';
 import 'package:raven_front/pages/transaction/checkout.dart';
@@ -18,12 +19,15 @@ class HomeWallet extends StatelessWidget {
 
   Widget body() => Navigator(
       key: components.navigator.keys.navWallet,
-      initialRoute: '/transactions',
+      initialRoute: '/account/wallet',
       onGenerateRoute: (RouteSettings settings) {
         /// one liner
         //return PageRouteBuilder(pageBuilder: (_,__,___,) => pages.routesWallet(context)[settings.name], transitionDuration: const Duration(seconds: 0));
         Widget page;
         switch (settings.name) {
+          case '/account/wallet':
+            page = HomeWalletContents();
+            break;
           case '/transactions':
             page = Transactions();
             break;
@@ -49,7 +53,7 @@ class HomeWallet extends StatelessWidget {
             page = Checkout();
             break;
           default:
-            page = Transactions();
+            page = HomeWalletContents();
             break;
         }
         return PageRouteBuilder(
