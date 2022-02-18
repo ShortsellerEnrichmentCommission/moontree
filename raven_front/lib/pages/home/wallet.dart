@@ -21,6 +21,8 @@ class HomeWallet extends StatelessWidget {
       key: components.navigator.keys.navWallet,
       initialRoute: '/account/wallet',
       onGenerateRoute: (RouteSettings settings) {
+        print('settings.name ${settings.name}');
+
         /// one liner
         //return PageRouteBuilder(pageBuilder: (_,__,___,) => pages.routesWallet(context)[settings.name], transitionDuration: const Duration(seconds: 0));
         Widget page;

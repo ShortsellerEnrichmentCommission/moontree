@@ -72,10 +72,12 @@ class _NavDrawerState extends State<NavDrawer> {
           }
           if (!arrow) {
             Backdrop.of(components.navigator.routeContext!).fling();
-            Navigator.of(components.navigator.routeContext!).pushNamed(
-              link,
-              arguments: arguments,
-            );
+            components.navigator.keys.navWallet.currentState!
+                .pushNamed(link, arguments: arguments);
+            //Navigator.of(components.navigator.routeContext!).pushNamed(
+            //  link,
+            //  arguments: arguments,
+            //);
             streams.app.setting.add(null);
           } else {
             streams.app.setting.add(link);
