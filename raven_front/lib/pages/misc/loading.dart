@@ -11,6 +11,7 @@ import 'package:raven_back/services/wallet/constants.dart';
 import 'package:raven_front/listeners/listeners.dart';
 import 'package:raven_front/services/identicon.dart';
 import 'package:raven_front/services/storage.dart';
+import 'package:raven_front/components/components.dart';
 
 class Loading extends StatefulWidget {
   @override
@@ -94,7 +95,9 @@ class _LoadingState extends State<Loading> with TickerProviderStateMixin {
     } else {
       //Future.delayed(Duration(seconds: 60));
       Future.microtask(() =>
-          Navigator.pushReplacementNamed(context, '/home', arguments: {}));
+          //Navigator.pushReplacementNamed(context, '/home', arguments: {})
+          components.navigator.keys.navApp.currentState!
+              .pushReplacementNamed('/home/wallet'));
     }
   }
 

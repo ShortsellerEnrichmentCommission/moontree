@@ -30,6 +30,10 @@ import 'package:raven_front/pages/transaction/send.dart';
 import 'package:raven_front/pages/transaction/transaction.dart';
 import 'package:raven_front/pages/wallet/wallet.dart';
 import 'package:raven_front/widgets/front/loader.dart';
+import 'package:raven_front/pages/home/wallet.dart';
+import 'package:raven_front/pages/home/manage.dart';
+import 'package:raven_front/pages/home/swap.dart';
+import 'package:raven_front/pages/home/settings.dart';
 
 class pages {
   static Loading loading = Loading();
@@ -64,38 +68,78 @@ class pages {
   static TechnicalView technicalView = TechnicalView();
   static WalletView walletView = WalletView();
 
-  static Map<String, Widget Function(BuildContext)> routes(
-          BuildContext context) =>
+  static HomeWallet homeWallet = HomeWallet();
+  static HomeManage homeManage = HomeManage();
+  static HomeSwap homeSwap = HomeSwap();
+  static HomeSettings homeSettings = HomeSettings();
+
+  static Map<String, Widget Function(BuildContext)> routesApp(
+    BuildContext context,
+  ) =>
       {
-        '/': (context) => loading,
-        '/home': (context) => home,
-        '/manage/asset': (context) => asset,
-        '/transactions': (context) => transactions,
-        '/wallet': (context) => walletView,
-        '/loader': (context) => loader,
-        '/scan': (context) => scan,
-        '/create/nft': (context) => createNFTAsset,
-        '/create/main': (context) => createMainAsset,
-        '/create/qualifier': (context) => createQualifierAsset,
-        '/create/channel': (context) => createChannelAsset,
-        '/create/restricted': (context) => createRestrictedAsset,
-        '/security/change': (context) => changePassword,
-        '/security/resume': (context) => changeResume,
-        '/security/remove': (context) => removePassword,
-        '/security/login': (context) => login,
-        '/transaction/transaction': (context) => transaction,
-        '/transaction/receive': (context) => receive,
-        '/transaction/send': (context) => send,
-        '/transaction/checkout': (context) => checkout,
-        '/settings/about': (context) => about,
-        '/settings/level': (context) => advanced,
-        '/settings/currency': (context) => language,
-        '/settings/export': (context) => export,
-        '/settings/import': (context) => import,
-        '/settings/network': (context) => electrumNetwork,
-        '/settings/preferences': (context) => preferences,
-        '/settings/security': (context) => security,
-        '/settings/support': (context) => support,
-        '/settings/technical': (context) => technicalView,
+        '/': (BuildContext context) => loading,
+        '/home/wallet': (BuildContext context) => homeWallet,
+        '/home/manage': (BuildContext context) => homeManage,
+        '/home/swap': (BuildContext context) => homeSwap,
+        '/home/settings': (BuildContext context) => homeSettings,
       };
+
+  static Map<String, Widget Function(BuildContext)> routesSettings(
+    BuildContext context,
+  ) =>
+      {
+        '/security/change': (BuildContext context) => changePassword,
+        '/security/resume': (BuildContext context) => changeResume,
+        '/security/remove': (BuildContext context) => removePassword,
+        '/security/login': (BuildContext context) => login,
+        '/settings/about': (BuildContext context) => about,
+        '/settings/level': (BuildContext context) => advanced,
+        '/settings/currency': (BuildContext context) => language,
+        '/settings/export': (BuildContext context) => export,
+        '/settings/import': (BuildContext context) => import,
+        '/settings/network': (BuildContext context) => electrumNetwork,
+        '/settings/preferences': (BuildContext context) => preferences,
+        '/settings/security': (BuildContext context) => security,
+        '/settings/support': (BuildContext context) => support,
+        '/settings/technical': (BuildContext context) => technicalView,
+      };
+  static Map<String, Widget Function(BuildContext)> routesWallet(
+    BuildContext context,
+  ) =>
+      {
+        '/transactions': (BuildContext context) => transactions,
+        '/wallet': (BuildContext context) => walletView,
+        '/loader': (BuildContext context) => loader,
+        '/scan': (BuildContext context) => scan,
+        '/transaction/transaction': (BuildContext context) => transaction,
+        '/transaction/receive': (BuildContext context) => receive,
+        '/transaction/send': (BuildContext context) => send,
+        '/transaction/checkout': (BuildContext context) => checkout,
+      };
+  static Map<String, Widget Function(BuildContext)> routesManage(
+    BuildContext context,
+  ) =>
+      {
+        '/manage/asset': (BuildContext context) => asset,
+        '/create/nft': (BuildContext context) => createNFTAsset,
+        '/create/main': (BuildContext context) => createMainAsset,
+        '/create/qualifier': (BuildContext context) => createQualifierAsset,
+        '/create/channel': (BuildContext context) => createChannelAsset,
+        '/create/restricted': (BuildContext context) => createRestrictedAsset,
+      };
+  static Map<String, Widget Function(BuildContext)> routesSwap(
+    BuildContext context,
+  ) =>
+      {
+        //'/swap/assets': (BuildContext context) => technicalView,
+      };
+
+  static Map<String, Widget Function(BuildContext)> routesAll(
+    BuildContext context,
+  ) =>
+      routesApp(context)
+        ..addAll(routesWallet(context))
+        ..addAll(routesManage(context))
+        ..addAll(routesSwap(context))
+        ..addAll(routesSettings(context));
 }

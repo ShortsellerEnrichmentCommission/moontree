@@ -113,7 +113,14 @@ class _NavBarState extends State<NavBar> {
 
   Widget sectorIcon({required AppContext appContext}) => IconButton(
         onPressed: () {
-          Navigator.of(components.navigator.routeContext!).pushNamed('/home');
+          // ? shouldn't we popUntil if it's in the correct
+          // components.navigator.routeStack, otherwise pushNamed if not present
+          components.navigator.keys.navApp.currentState!.pushNamed({
+            AppContext.wallet: '/home/wallet',
+            AppContext.manage: '/home/manage',
+            AppContext.swap: '/home/swap',
+          }[appContext]!);
+          //Navigator.of(components.navigator.routeContext!).pushNamed('/home');
           setState(() {
             streams.app.context.add(appContext);
           });

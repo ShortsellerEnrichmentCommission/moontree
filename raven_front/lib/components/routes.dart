@@ -3,13 +3,20 @@ import 'package:raven_back/raven_back.dart';
 import 'package:raven_back/extensions/string.dart';
 
 class RouteStack extends NavigatorObserver {
+  NavKeys keys = NavKeys();
+
   List<Route<dynamic>> routeStack = [];
+  List<Route<dynamic>> routeStackApp = [];
+  List<Route<dynamic>> routeStackWallet = [];
+  List<Route<dynamic>> routeStackManage = [];
+  List<Route<dynamic>> routeStackSwap = [];
   BuildContext? routeContext;
   BuildContext? scaffoldContext;
   TabController? tabController;
 
   void didPush(Route<dynamic> route, Route<dynamic>? previousRoute) {
     routeStack.add(route);
+    // also push to the correct routeStack
     routeContext = route.navigator?.context;
     streams.app.page.add(conformName(route.settings.name));
   }
@@ -41,4 +48,12 @@ class RouteStack extends NavigatorObserver {
       handleHome(name?.split('/').last.toTitleCase() ?? streams.app.page.value);
 
   String handleHome(String name) => name == 'Home' ? 'Wallet' : name;
+}
+
+class NavKeys {
+  final GlobalKey<NavigatorState> navApp = GlobalKey();
+  final GlobalKey<NavigatorState> navSettings = GlobalKey();
+  final GlobalKey<NavigatorState> navWallet = GlobalKey();
+  final GlobalKey<NavigatorState> navManage = GlobalKey();
+  final GlobalKey<NavigatorState> navSwap = GlobalKey();
 }
