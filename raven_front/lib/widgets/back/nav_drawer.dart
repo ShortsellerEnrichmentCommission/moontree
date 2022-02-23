@@ -71,7 +71,7 @@ class _NavDrawerState extends State<NavDrawer> {
             execute();
           }
           if (!arrow) {
-            Backdrop.of(components.navigator.routeContext!).fling();
+            //Backdrop.of(components.navigator.routeContext!).fling();
             Navigator.of(components.navigator.routeContext!).pushNamed(
               link,
               arguments: arguments,

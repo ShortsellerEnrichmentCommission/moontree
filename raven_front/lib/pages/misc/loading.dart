@@ -94,7 +94,7 @@ class _LoadingState extends State<Loading> with TickerProviderStateMixin {
     } else {
       //Future.delayed(Duration(seconds: 60));
       Future.microtask(() =>
-          Navigator.pushReplacementNamed(context, '/home', arguments: {}));
+          Navigator.pushReplacementNamed(context, '/home/home', arguments: {}));
     }
   }
 

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:raven_front/theme/extensions.dart';
+import 'package:raven_front/widgets/widgets.dart';
 
 class About extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return ScaffoldBackdrop(
+        front: Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
@@ -21,6 +23,6 @@ class About extends StatelessWidget {
               SizedBox(height: 40),
             ]),
       ],
-    );
+    ));
   }
 }
